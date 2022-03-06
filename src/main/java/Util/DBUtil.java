@@ -1,6 +1,5 @@
 package Util;
 
-import bean.LoginBean;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,35 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtil {
-    public boolean validate(LoginBean loginBean) throws ClassNotFoundException {
-        boolean status = false;
-        MysqlDataSource mySqlDS = new MysqlDataSource();
-
-        mySqlDS.setUrl("jdbc:mysql://localhost:3306/canadacensusdb");
-        mySqlDS.setUser("root");
-        mySqlDS.setPassword("");
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-
-        try (Connection connection = mySqlDS.getConnection();
-
-             // Step 2:Create a statement using connection object
-             PreparedStatement preparedStatement = connection
-                     .prepareStatement("select * from employee where userName = ? and password = ? ")) {
-            preparedStatement.setString(1, loginBean.getUsername());
-            preparedStatement.setString(2, loginBean.getPassword());
-
-            System.out.println(preparedStatement);
-            ResultSet rs = preparedStatement.executeQuery();
-            status = rs.next();
-
-        } catch (SQLException e) {
-            // process sql exception
-            printSQLException(e);
-        }
-        return status;
-    }
-
     private static void printSQLException(SQLException ex) {
         for (Throwable e : ex) {
             if (e instanceof SQLException) {

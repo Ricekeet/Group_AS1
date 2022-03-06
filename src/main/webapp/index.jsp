@@ -2,12 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Group Assignment 1</title>
 </head>
 <body>
-<h1><%= "Hello World!" %>
-</h1>
+    <h1>Group Assignment 1</h1>
+    <div class="navContainer">
+        <ul>
+            <a href="GeographicalAreaClassificationList.jsp"><li>Geographical Area Classification list</li></a>
+        </ul>
+    </div>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
 </body>
 </html>
