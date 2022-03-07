@@ -42,7 +42,7 @@
         <c:if test="${requestScope.areaResults != null}">
             <c:forEach items="${requestScope.areaResults}" var="item">
                 <li>
-                    ${item.name}
+                    <a href="/IndividualGeographicAreaDetails?id=${item.id}">${item.name}</a>
                 </li>
             </c:forEach>
         </c:if>
