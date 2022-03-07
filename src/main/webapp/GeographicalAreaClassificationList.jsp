@@ -31,7 +31,7 @@
 
 <%--    Add levels into the dropdown list--%>
             <c:forEach var="item" items="${requestScope.levels}">
-                <option value="${item}">${item}</option>
+                <option value="${item.id}">${item}</option>
             </c:forEach>
         </select>
         <input type="submit" value="Search">
@@ -42,7 +42,7 @@
         <c:if test="${requestScope.areaResults != null}">
             <c:forEach items="${requestScope.areaResults}" var="item">
                 <li>
-                    <a href="/IndividualGeographicAreaDetails?id=${item.id}">${item.name}</a>
+                    ${item.name}
                 </li>
             </c:forEach>
         </c:if>

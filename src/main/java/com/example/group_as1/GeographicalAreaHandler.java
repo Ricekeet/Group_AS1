@@ -76,30 +76,57 @@ public class GeographicalAreaHandler {
         }
         return null;
     }
-    public List<AreaDetails> RecordDetails(int id){
+    public List<AreaDetails> RecordDetails(int area){
         try{
-            String newRecord = "SELECT c.name,c.code,c.level,a.combined" +
-                    "FROM geographicarea as c" +
-                    "JOIN age as a" +
-                    "ON c.geographicareaid=a.geographicArea" +
-                    "WHERE c.geographicareaid = ?" +
-                    "AND a.censusyear = 1" +
-                    "AND a.agegroup = 1";
+            String newRecord = "SELECT c.geographicareaid, c.name,c.code,c.level,a.combined " +
+                    "FROM geographicarea as c " +
+                    "JOIN age as a " +
+                    "ON c.geographicareaid= a.geographicArea " +
+                    "WHERE c.geographicareaid = ? " +
+                    "AND age.censusyear = 1 " +
+                    "AND age.agegroup = 1";
             PreparedStatement prepStatement = dbConnection.prepareStatement(newRecord);
-            prepStatement.setString(1, String.valueOf(id));
+            prepStatement.setString(1, String.valueOf(area));
 
             ResultSet results = prepStatement.executeQuery();
             List<AreaDetails> areaDetails = new ArrayList<>();
 
             while(results.next()){
                 AreaDetails details = new AreaDetails();
-                details.setName(results.getString(1));
-                details.setCode(results.getInt(2));
-                details.setLevel(results.getInt(3));
-                details.setCombined(results.getInt(4));
+                details.setGeographicAreaId(results.getInt(1));
+                details.setName(results.getString(2));
+                details.setCode(results.getInt(3));
+                details.setLevel(results.getInt(4));
+                details.setCombined(results.getInt(5));
                 areaDetails.add(details);
             }
             return areaDetails;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<GeographicalArea> getAllAreas(){
+        try{
+            String q = "SELECT * FROM geographicarea";
+
+            PreparedStatement prepStatement = dbConnection.prepareStatement(q);
+
+            ResultSet results = prepStatement.executeQuery();
+            List<GeographicalArea> areas = new ArrayList<>();
+            if(results != null){
+                while(results.next()){
+                    GeographicalArea area = new GeographicalArea();
+                    area.setId(results.getInt(1));
+                    area.setCode(results.getInt(2));
+                    area.setLevel(results.getInt(3));
+                    area.setName(results.getString(4));
+                    area.setAlternativeCode(results.getInt(5));
+                    areas.add(area);
+                }
+            }
+            return areas;
         } catch (SQLException e) {
             e.printStackTrace();
         }

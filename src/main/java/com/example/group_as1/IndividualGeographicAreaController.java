@@ -19,17 +19,17 @@ public class IndividualGeographicAreaController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int areaId = Integer.parseInt(request.getParameter("id"));
 
-        request.setAttribute("details", handler.RecordDetails(areaId));
-
-        getServletContext().getRequestDispatcher("/IndividualGeographicAreaDetails")
-                .forward(request,response);
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int areas = Integer.parseInt(request.getParameter("areas"));
 
+        request.setAttribute("areaDetails", handler.RecordDetails(areas));
+
+        getServletContext().getRequestDispatcher("/IndividualGeographicAreaDetails")
+                .forward(request,response);
     }
 }

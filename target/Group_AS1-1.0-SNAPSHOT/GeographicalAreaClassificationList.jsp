@@ -31,7 +31,7 @@
 
 <%--    Add levels into the dropdown list--%>
             <c:forEach var="item" items="${requestScope.levels}">
-                <option value="${item}">${item}</option>
+                <option value="${item.id}">${item}</option>
             </c:forEach>
         </select>
         <input type="submit" value="Search">
