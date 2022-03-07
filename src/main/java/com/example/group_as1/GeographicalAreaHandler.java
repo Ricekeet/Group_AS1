@@ -76,31 +76,36 @@ public class GeographicalAreaHandler {
         }
         return null;
     }
+
     public List<AreaDetails> RecordDetails(int area){
+
         try{
-            String newRecord = "SELECT c.geographicareaid, c.name,c.code,c.level,a.combined " +
+            String newRecord = "SELECT c.geographicAreaID, c.name,c.code,c.level,a.combined " +
                     "FROM geographicarea as c " +
                     "JOIN age as a " +
-                    "ON c.geographicareaid= a.geographicArea " +
-                    "WHERE c.geographicareaid = ? " +
-                    "AND age.censusyear = 1 " +
-                    "AND age.agegroup = 1";
+                    "ON c.geographicAreaID= a.geographicArea " +
+                    "WHERE c.geographicAreaID = ? " +
+                    "AND a.censusYear = 1 " +
+                    "AND a.ageGroup = 1";
             PreparedStatement prepStatement = dbConnection.prepareStatement(newRecord);
             prepStatement.setString(1, String.valueOf(area));
 
             ResultSet results = prepStatement.executeQuery();
             List<AreaDetails> areaDetails = new ArrayList<>();
 
-            while(results.next()){
-                AreaDetails details = new AreaDetails();
-                details.setGeographicAreaId(results.getInt(1));
-                details.setName(results.getString(2));
-                details.setCode(results.getInt(3));
-                details.setLevel(results.getInt(4));
-                details.setCombined(results.getInt(5));
-                areaDetails.add(details);
+            //Create Details object and add into list
+            if(results != null){
+                while(results.next()){
+                    AreaDetails details = new AreaDetails();
+                    details.setGeographicAreaId(results.getInt(1));
+                    details.setName(results.getString(2));
+                    details.setCode(results.getInt(3));
+                    details.setLevel(results.getInt(4));
+                    details.setCombined(results.getInt(5));
+                    areaDetails.add(details);
+                }
+                return areaDetails;
             }
-            return areaDetails;
         } catch (SQLException e) {
             e.printStackTrace();
         }
