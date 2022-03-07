@@ -1,6 +1,7 @@
 package com.example.group_as1;
 
 import Util.DBUtil;
+import bean.AreaDetails;
 import bean.GeographicalArea;
 
 import java.sql.Connection;
@@ -70,6 +71,35 @@ public class GeographicalAreaHandler {
             }
 
             return areas;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public List<AreaDetails> RecordDetails(int id){
+        try{
+            String newRecord = "SELECT c.name,c.code,c.level,a.combined" +
+                    "FROM geographicarea as c" +
+                    "JOIN age as a" +
+                    "ON c.geographicareaid=a.geographicArea" +
+                    "WHERE c.geographicareaid = ?" +
+                    "AND a.censusyear = 1" +
+                    "AND a.agegroup = 1";
+            PreparedStatement prepStatement = dbConnection.prepareStatement(newRecord);
+            prepStatement.setString(1, String.valueOf(id));
+
+            ResultSet results = prepStatement.executeQuery();
+            List<AreaDetails> areaDetails = new ArrayList<>();
+
+            while(results.next()){
+                AreaDetails details = new AreaDetails();
+                details.setName(results.getString(1));
+                details.setCode(results.getInt(2));
+                details.setLevel(results.getInt(3));
+                details.setCombined(results.getInt(4));
+                areaDetails.add(details);
+            }
+            return areaDetails;
         } catch (SQLException e) {
             e.printStackTrace();
         }
