@@ -84,4 +84,10 @@ footer
     line-height: 60px;
     text-align: center;
 }
+.SQLinfo
+{
+    width: 90%;
+    padding: 20px;
+    margin: 0 auto;
+}
 

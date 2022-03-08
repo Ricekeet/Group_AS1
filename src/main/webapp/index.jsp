@@ -3,31 +3,30 @@
 <html>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <head>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
     <title>Group Assignment 1</title>
 </head>
 <body>
-    <header>
-        <h1 class="title">Group Assignment 1</h1>
-        <nav class="navContainer">
-            <ul class="navUl">
-                <li class="navLi"><a href="GeographicalAreaClassificationList.jsp">Geographical Area Classification list</a></li>
-                <li class="navLi"><a href="IndividualGeographicAreaDetails.jsp">Individual Geographical Area Details</a></li>
-                <li class="navLi"><a href="Age.jsp">Age</a></li>
+<% if (request.getAttribute("DBUser") == null){
+    request.setAttribute("message", "Please log in to SQL");
 
-            </ul>
-        </nav>
-    </header>
+    String forward = "SQLGetInfo.jsp";
+    RequestDispatcher view = request.getRequestDispatcher(forward);
+    view.forward(request,response);
+}%>
+<header>
+    <h1 class="title">Group Assignment 1</h1>
+    <nav class="navContainer">
+        <ul class="navUl">
+            <li class="navLi"><a href="GeographicalAreaClassificationList.jsp">Geographical Area Classification list</a></li>
+            <li class="navLi"><a href="IndividualGeographicAreaDetails.jsp">Individual Geographical Area Details</a></li>
+            <li class="navLi"><a href="Age.jsp">Age</a></li>
 
-    <main hidden>
+        </ul>
+    </nav>
+</header>
 
-    </main>
-    <footer>
-        Page created by: Allen wu, Keith Sialana, Chinar Shakari
-    </footer>
-<br/>
-    <footer>
-        Page created by: Allen wu, Keith Sialana, Chinar Shakari
-    </footer>
+<footer>
+    Page created by: Allen wu, Keith Sialana, Chinar Shakari
+</footer>
 </body>
 </html>

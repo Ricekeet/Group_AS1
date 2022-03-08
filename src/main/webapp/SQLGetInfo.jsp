@@ -7,13 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <head>
     <title>SQL stuff</title>
 </head>
 <body>
-    <h1>Log in to MySQL</h1>
-    <form action="SQLLogin" method="post">
+<header>
+    <h1 class="title">Log in to MySQL</h1>
+</header>
+    <form class="SQLinfo" action="SQLLogin" method="post">
         <div class="error">${requestScope.message}</div>
         <br>
         <label for="database">SQL Database Name:</label><br>

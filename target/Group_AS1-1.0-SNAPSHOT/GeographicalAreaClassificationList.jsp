@@ -11,14 +11,26 @@
 <% GeographicalAreaHandler handler = new GeographicalAreaHandler();
     request.setAttribute("levels", handler.getAllLevels()); %>
 <html>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <head>
     <title>Geographical Area Classification List</title>
 </head>
 <body>
-    <h1>Geographical Area Classification List</h1>
+<header>
+    <h1 class="title">Geographical Area Classification List</h1>
+    <nav class="navContainer">
+        <ul class="navUl">
+            <li class="navLi"><a href="GeographicalAreaClassificationList.jsp">Geographical Area Classification list</a></li>
+            <li class="navLi"><a href="IndividualGeographicAreaDetails.jsp">Individual Geographical Area Details</a></li>
+            <li class="navLi"><a href="Age.jsp">Age</a></li>
+
+        </ul>
+    </nav>
+</header>
+
     <p>Geographical Areas are classified by a hierarchy level.</p>
     <h3>Classification Levels</h3>
-    <ul>
+    <ul >
         <li>0 - The Country of Canada</li>
         <li>1 - Province of Canada</li>
         <li>2 - Census Metropolitan Areas (CMA) and Census Agglomerations (CA)</li>
@@ -48,5 +60,8 @@
             </c:forEach>
         </c:if>
     </ul>
+<footer>
+    Page created by: Allen wu, Keith Sialana, Chinar Shakari
+</footer>
 </body>
 </html>
