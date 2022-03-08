@@ -11,6 +11,7 @@
 <% GeographicalAreaHandler handler = new GeographicalAreaHandler();
     request.setAttribute("levels", handler.getAllLevels()); %>
 <html>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <head>
     <title>Geographical Area Classification List</title>
 </head>
