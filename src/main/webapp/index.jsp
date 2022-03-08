@@ -6,6 +6,13 @@
     <title>Group Assignment 1</title>
 </head>
 <body>
+<% if (request.getAttribute("DBUser") == null){
+    request.setAttribute("message", "Please log in to SQL");
+
+    String forward = "SQLGetInfo.jsp";
+    RequestDispatcher view = request.getRequestDispatcher(forward);
+    view.forward(request,response);
+}%>
     <h1>Group Assignment 1</h1>
     <div class="navContainer">
         <ul>

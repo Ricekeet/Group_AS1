@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="com.example.group_as1.GeographicalAreaHandler" %><%--
+<%@ page import="com.example.group_as1.GeographicalAreaHandler" %>
+<%@ page import="bean.SQLInformation" %><%--
   Created by IntelliJ IDEA.
   User: Keith
   Date: 3/5/2022

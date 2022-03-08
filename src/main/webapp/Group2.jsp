@@ -1,7 +1,8 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="bean.SQLInformation" %><%--
   Created by IntelliJ IDEA.
   User: Allen Wu
   Date: 3/6/2022
@@ -11,9 +12,9 @@
 <%
     String driverName = "com.mysql.jdbc.Driver";
     String connectionUrl = "jdbc:mysql://localhost:3306/";
-    String dbName = "census";
-    String userId = "root";
-    String password = "!Shanghai1";
+    String dbName = SQLInformation.databaseName;
+    String userId = SQLInformation.username;
+    String password = SQLInformation.password;
 
     try {
         Class.forName(driverName);
