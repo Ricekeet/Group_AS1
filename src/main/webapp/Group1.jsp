@@ -33,7 +33,18 @@
     <title>Census Age group from ${message}</title>
 </head>
 <body>
-<h2>Census Age group from ${message}</h2>
+<header>
+    <h1 class="title">Age</h1>
+    <nav class="navContainer">
+        <ul class="navUl">
+            <li class="navLi"><a href="GeographicalAreaClassificationList.jsp">Geographical Area Classification list</a></li>
+            <li class="navLi"><a href="IndividualGeographicAreaDetails.jsp">Individual Geographical Area Details</a></li>
+            <li class="navLi"><a href="Age.jsp">Age</a></li>
+
+        </ul>
+    </nav>
+</header>
+<h2 >Census Age group from ${message}</h2>
 <div align="center">
     <table align="center" cellpadding="4" cellspacing="4">
         <tr>
@@ -65,5 +76,8 @@
         %>
     </table>
 </div>
+<footer>
+    Page created by: Allen wu, Keith Sialana, Chinar Shakari
+</footer>
 </body>
 </html>

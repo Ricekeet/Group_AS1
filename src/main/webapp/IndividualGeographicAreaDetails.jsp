@@ -10,12 +10,23 @@
 <% GeographicalAreaHandler handler = new GeographicalAreaHandler();
     request.setAttribute("areas", handler.getAllAreas()); %>
 <html>
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <head>
     <title>Individual Geographical Area Details</title>
 </head>
 <body>
-    <h1>Individual Geographical Area Details</h1>
+    <header>
+        <h1 class="title">Individual Geographical Area Details</h1>
+        <nav class="navContainer">
+            <ul class="navUl">
+                <li class="navLi"><a href="GeographicalAreaClassificationList.jsp">Geographical Area Classification list</a></li>
+                <li class="navLi"><a href="IndividualGeographicAreaDetails.jsp">Individual Geographical Area Details</a></li>
+                <li class="navLi"><a href="Age.jsp">Age</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
     <form action="IndividualGeographicAreaController" method="post">
         <select name="areas" id="areas">
 
@@ -42,7 +53,9 @@
                 </p>
             </c:forEach>
         </c:if>
-
     </h4>
+    <footer>
+        Page created by: Allen wu, Keith Sialana, Chinar Shakari
+    </footer>
 </body>
 </html>
