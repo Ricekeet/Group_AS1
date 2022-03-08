@@ -10,6 +10,7 @@
 <% GeographicalAreaHandler handler = new GeographicalAreaHandler();
     request.setAttribute("areas", handler.getAllAreas()); %>
 <html>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css">
 <head>
     <title>Individual Geographical Area Details</title>
 </head>
